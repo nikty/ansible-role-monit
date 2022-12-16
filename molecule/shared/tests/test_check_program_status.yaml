@@ -1,0 +1,26 @@
+- hosts: all
+  become: yes
+  vars:
+    monit_interval: 30
+    monit_httpd_acl:
+      - host: localhost
+    monit_monitors:
+      - name: monitor_program_status
+        enabled: True
+        monitor_program: True
+        path: /bin/awk 'BEGIN { srand(); exit int(rand()*10%2)}'
+        tests:
+          - test_status:
+              value: 0
+              notequal: True
+            action_restart: True
+          - test_status:
+              value: 0
+              notequal: True
+            action_exec:
+              command: logger 'exec logger for monit service $MONIT_SERVICE'
+            succeeded_action_restart: True
+  roles:
+    - role: ansible-role-monit
+          
+    

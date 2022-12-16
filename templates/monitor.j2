@@ -362,7 +362,7 @@
 {% endif %}
 {% elif test.test_status is defined %}
 {% if monit_monitor_type == 'PROGRAM' and test.test_status.value is defined %}
-{% if test.test_status.changed | default(True) %}
+{% if test.test_status.changed | default(False) %}
 {% set monit_monitor_test = 'CHANGED STATUS' %}
 {% elif test.test_status.value is defined %}
 {% set monit_monitor_test = 'STATUS' %}
