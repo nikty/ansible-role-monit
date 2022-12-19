@@ -695,7 +695,7 @@
 {% endif %}
 {% if monit_monitor_test | length > 0 %}
 {% if monit_monitor_test_number[0] == 0 %}
-CHECK {{ monit_monitor_type }} {{ monit_monitor.name }}
+CHECK {{ monit_monitor_type }} "{{ monit_monitor.name }}"
 {% if monit_monitor_type == 'PROCESS' %}
 {% if monit_monitor.pid is defined %}
   WITH PIDFILE {{ monit_monitor.pid }}

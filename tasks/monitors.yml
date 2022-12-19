@@ -47,6 +47,7 @@
   loop_control:
     loop_var: monit_monitor_name
   notify: restart monit
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Get current enabled monitors.
   command: ls -1 {{ monit_conf_enabled_dir }}
@@ -62,3 +63,4 @@
   loop_control:
     loop_var: monit_monitor_name
   notify: restart monit
+  ignore_errors: "{{ ansible_check_mode }}"
