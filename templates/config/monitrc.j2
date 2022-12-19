@@ -61,7 +61,7 @@ SET EVENTQUEUE
 {% endif %}
 
 {% if monit_mmonit %}
-SET MMONIT {%if monit_mmonit_ssl %}https://{% else %}http://{% endif %}{{ monit_mmonit_user + ':' + monit_mmonit_password + '@' + monit_mmonit_host + ':' + monit_mmonit_port + monit_mmonit_uri }}
+SET MMONIT {% if monit_mmonit_ssl %}https://{% else %}http://{% endif %}{{ monit_mmonit_user + ':' + monit_mmonit_password + '@' + monit_mmonit_host + ':' + monit_mmonit_port + monit_mmonit_uri }}
 {% if monit_mmonit_timeout > 0 %}
   WITH TIMEOUT {{ monit_mmonit_timeout }} SECONDS
 {% endif %}

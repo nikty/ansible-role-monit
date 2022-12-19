@@ -1,12 +1,16 @@
 ---
-- include_tasks: mysql.yml
-  when: monit_monitors | length > 0
 
-- include_tasks: ssh.yml
-  when: monit_monitors | length > 0
+# TODO: This creates side-effects for the configuration
+# - include_tasks: mysql.yml
+#   when: monit_monitors | length > 0
 
-- include_tasks: varnish.yml
-  when: monit_monitors | length > 0
+# TODO: This creates side-effects for the configuration
+# - include_tasks: ssh.yml
+#   when: monit_monitors | length > 0
+
+# TODO: This creates side-effects for the configuration
+# - include_tasks: varnish.yml
+#   when: monit_monitors | length > 0
 
 - name: Write monitors.
   template:
