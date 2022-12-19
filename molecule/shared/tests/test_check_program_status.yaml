@@ -1,6 +1,7 @@
 - hosts: all
   become: yes
   vars:
+    monit_httpd_ssl: False
     monit_interval: 30
     monit_httpd_acl:
       - host: localhost
@@ -18,7 +19,7 @@
               value: 0
               notequal: True
             action_exec:
-              command: logger 'exec logger for monit service $MONIT_SERVICE'
+              command: /bin/sh -c 'logger exec logger for monit service $MONIT_SERVICE'
             succeeded_action_restart: True
   roles:
     - role: ansible-role-monit
